@@ -26,24 +26,24 @@ tax = subtotal * TAX_RATE
 total = subtotal + tax
 
 # Display the receipt
-print("***************************************")
+print('*' * 39)
 print("My Coffee and Muffin Shop")
-print("***************************************")
+print('*' * 39)
 print("Number of items bought:")
 print("Coffee:", num_coffees)
 print("Muffins:", num_muffins)
 print("Croissants:", num_croissants)
 print("Bagels:", num_bagels)
-print("***************************************")
+print('*' * 39)
 print("My Coffee and Muffin Shop Receipt")
 print(f"{num_coffees} Coffee at ${COFFEE_PRICE} each: ${num_coffees * COFFEE_PRICE:.2f}")
 print(f"{num_muffins} Muffins at ${MUFFIN_PRICE} each: ${num_muffins * MUFFIN_PRICE:.2f}")
 print(f"{num_croissants} Croissants at ${CROISSANT_PRICE} each: ${num_croissants * CROISSANT_PRICE:.2f}")
 print(f"{num_bagels} Bagels at ${BAGEL_PRICE} each: ${num_bagels * BAGEL_PRICE:.2f}")
 print(f"{TAX_RATE * 100}% tax: ${tax:.2f}")
-print("---------")
+print('-' * 9)
 print(f"Total: ${total:.2f}")
-print("***************************************")
+print('*' * 39)
 
 # Thank the user and invite them to visit again
 print("Thank you for choosing My Coffee and Muffin Shop!")
