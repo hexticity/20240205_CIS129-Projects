@@ -22,18 +22,18 @@ tax = subtotal * TAX_RATE
 total = subtotal + tax
 
 # Display the receipt
-print("***************************************")
+print("*" * 39)
 print("My Coffee and Muffin Shop")
 print("Number of coffees bought?")
 print(num_coffees)
 print("Number of muffins bought?")
 print(num_muffins)
-print("***************************************")
-print("***************************************")
+print("*" * 39)
+print("*" * 39)
 print("My Coffee and Muffin Shop Receipt")
 print(f"{num_coffees} Coffee at ${COFFEE_PRICE} each: ${num_coffees * COFFEE_PRICE:.2f}")
 print(f"{num_muffins} Muffins at ${MUFFIN_PRICE} each: ${num_muffins * MUFFIN_PRICE:.2f}")
 print(f"{TAX_RATE * 100}% tax: ${tax:.2f}")
-print("---------")
+print("-" * 9)
 print(f"Total: ${total:.2f}")
-print("***************************************")
+print("*" * 39)
