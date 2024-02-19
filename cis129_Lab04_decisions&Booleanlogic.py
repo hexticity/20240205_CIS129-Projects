@@ -16,7 +16,7 @@ monthlySales = float(input(prompt))
 
 # include code to get the Increase in Sales
 salesIncrease = float(input("Enter the percent of increase in sales (in decimal format): "))
-salesIncrease = salesIncrease * 100  # Convert to decimal
+salesIncrease = salesIncrease / 100  # Convert to decimal
 
 # include code to Calculate the Store Bonus (storeAmount)
 if monthlySales > 110000:
@@ -31,11 +31,11 @@ else:
     storeAmount = 0
 
 # include code to Calculate the Employee Bonus (empAmount)
-if salesIncrease >= 5:
+if salesIncrease >= .05:
   empAmount = 75
-elif salesIncrease >= 4:
+elif salesIncrease >= .04:
   empAmount = 50
-elif salesIncrease >= 3:
+elif salesIncrease >= .03:
     empAmount = 40
 else:
     empAmount = 0
