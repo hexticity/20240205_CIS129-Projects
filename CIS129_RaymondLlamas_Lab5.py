@@ -1,7 +1,8 @@
-# Program: Lab 5 The Bottle Return Program
+# Project: Lab 5 The Bottle Return Program
 # Author: Raymond Llamas
 # Date: 02-26-2024
-# Description: This program calculates the total payout for returning bottles over a week.
+
+# Program Description: This program calculates the total payout for returning bottles over a week.
 
 # Declare variables
 total_bottles = 0  # Total number of bottles collected for the week
