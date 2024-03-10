@@ -1,47 +1,89 @@
-# Constants
-SECTION_NAMES = ['A', 'B', 'C']
-SEAT_PRICES = {'A': 20, 'B': 15, 'C': 10}
-SEAT_CAPACITY = {'A': 300, 'B': 500, 'C': 200}
+# Theatre Seating Program
+# Raymond Llamas
+# CIS 129 - LAB 07
+# 03-09-2024
 
+# Set the constants, sections, prices, total seats
+SECTIONS = ['A', 'B', 'C']  # List of section names
+SEAT_PRICES = {'A': 20, 'B': 15, 'C': 10}  # mapping section names to seat prices
+SEAT_COUNTS = {'A': 300, 'B': 500, 'C': 200}  # mapping section names to available seat counts
+
+# Function for Welcome Message
 def display_welcome_message():
     print("Welcome to the Theater Seating Program!")
-    print("Section Names:", SECTION_NAMES)
-    print("Seat Prices:", SEAT_PRICES)
-    print("Seat Capacity:", SEAT_CAPACITY)
+    print("Section Names and Prices:")
+    for section in SECTIONS:
+        print(f"Section {section}: ${SEAT_PRICES[section]} per seat")
     print()
 
+# Function to obtain ticket sales while implementing input validation
 def get_ticket_sales():
-    ticket_sales = {}
-    for section in SECTION_NAMES:
+    sales = {}
+    for section in SECTIONS:
         while True:
             try:
-                tickets_sold = int(input(f"Enter the number of tickets sold for section {section}: "))
-                if tickets_sold < 0 or tickets_sold > SEAT_CAPACITY[section]:
-                    print("Invalid input. Please enter a non-negative number not exceeding the seat capacity.")
+                num_tickets = int(input(f"Enter the number of tickets sold in Section {section}: "))
+                if num_tickets < 0:
+                    print("Please enter a non-negative number.")
+                    continue
+                elif num_tickets > SEAT_COUNTS[section]:
+                    print(f"Sorry, there are only {SEAT_COUNTS[section]} seats available in Section {section}.")
+                    continue
                 else:
-                    ticket_sales[section] = tickets_sold
+                    sales[section] = num_tickets
                     break
             except ValueError:
-                print("Invalid input. Please enter a valid integer.")
-    return ticket_sales
+                print("Invalid input. Please enter a number.")
+    return sales
 
-def calculate_total_sales(ticket_sales):
-    total_sales = 0
-    for section, tickets_sold in ticket_sales.items():
-        total_sales += tickets_sold * SEAT_PRICES[section]
-    return total_sales
-
-def display_sales_summary(ticket_sales, total_sales):
-    print("\nSales Summary:")
-    for section, tickets_sold in ticket_sales.items():
-        print(f"Section {section}: {tickets_sold} tickets sold. Subtotal: ${tickets_sold * SEAT_PRICES[section]}")
-    print(f"\nOverall Total Sales: ${total_sales}")
+def calculate_subtotal(sales):
+    """
+    Calculate the subtotal for the current purchase based on the number of tickets sold in each section.
+    """
+    subtotal = 0
+    for section, num_tickets in sales.items():
+        subtotal += num_tickets * SEAT_PRICES[section]
+    return subtotal
 
 def main():
+    """
+    Main function to run the Theater Seating Program.
+    """
     display_welcome_message()
-    ticket_sales = get_ticket_sales()
-    total_sales = calculate_total_sales(ticket_sales)
-    display_sales_summary(ticket_sales, total_sales)
+    total_sales = 0
+    total_seats_sold = {section: 0 for section in SECTIONS}
+
+    while True:
+        # Get ticket sales for the current purchase
+        sales = get_ticket_sales()
+        # Calculate subtotal for the current purchase
+        subtotal = calculate_subtotal(sales)
+        # Update total sales
+        total_sales += subtotal
+        
+        # Update total seats sold in each section
+        for section, num_tickets in sales.items():
+            total_seats_sold[section] += num_tickets
+            SEAT_COUNTS[section] -= num_tickets
+
+        # Display subtotal and total sales so far
+        print(f"Subtotal for this purchase: ${subtotal}")
+        print(f"Total sales so far: ${total_sales}")
+        # Display number of seats sold in each section
+        print("Number of seats sold in each section:")
+        for section, num_seats_sold in total_seats_sold.items():
+            print(f"Section {section}: {num_seats_sold} seats")
+        print()
+
+        # Ask if the user wants to make another purchase
+        if input("Do you want to make another purchase? (yes/no): ").lower() != "yes":
+            break
+
+    # Display overall total and number of seats sold and subtotals for each section
+    print("Overall total: ${}".format(total_sales))
+    print("Number of seats sold and subtotals for each section:")
+    for section, num_seats_sold in total_seats_sold.items():
+        print(f"Section {section}: {num_seats_sold} seats, Subtotal: ${num_seats_sold * SEAT_PRICES[section]}")
 
 if __name__ == "__main__":
     main()
