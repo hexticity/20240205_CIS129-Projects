@@ -1,52 +1,40 @@
 import random
 
-# this function gets the players names
-def inputNames(playerOne, playerTwo):
-    playerOne = input('Enter player 1 name: ')
-    playerTwo = input('Enter player 2 name: ')
-    return playerOne, playerTwo
+def roll_dice():
+    return random.randint(1, 6)
 
-# this function will get the random values
-def rollDice(p1number, p2number, playerOne, playerTwo, winnerName):
-    p1number = random.randint(1, 6)
-    p2number = random.randint(1, 6)
+def get_player_names():
+    player1 = input("Enter player 1 name: ")
+    player2 = input("Enter player 2 name: ")
+    return player1, player2
 
-    if p1number == p2number:
-        winnerName = "TIE"
-    elif p1number > p2number:
-        winnerName = playerOne
+def determine_winner(player1, player2, roll1, roll2):
+    if roll1 == roll2:
+        return "It's a tie!"
+    elif roll1 > roll2:
+        return player1 + " wins!"
     else:
-        winnerName = playerTwo
-    return winnerName
+        return player2 + " wins!"
 
-# this function displays the winner
-def displayInfo(winnerName):
-    print('The winner is', winnerName)
+def main():
+    print("Welcome to the Dice Game!")
+    player1, player2 = get_player_names()
+    
+    play_again = True
+    while play_again:
+        input("Press Enter to roll the dice...")
+        roll1 = roll_dice()
+        roll2 = roll_dice()
+        
+        print(player1, "rolled:", roll1)
+        print(player2, "rolled:", roll2)
+        
+        print(determine_winner(player1, player2, roll1, roll2))
+        
+        play_again_input = input("Do you want to play again? (yes/no): ")
+        play_again = play_again_input.lower() == "yes"
 
-# initialize variables
-endProgram = "no"
-playerOne = "NO NAME"
-playerTwo = "NO NAME"
+    print("Thanks for playing!")
 
-# call to inputNames
-playerOne, playerTwo = inputNames(playerOne, playerTwo)
-
-# while loop to run program again
-while endProgram == 'no':
-
-    # initialize variables
-    p1number = 0
-    p2number = 0
-    winnerName = 'NO NAME'
-
-    # call to rollDice
-    winnerName = rollDice(p1number, p2number, playerOne, playerTwo, winnerName)
-
-    # call to displayInfo
-    displayInfo(winnerName)
-
-    # end of while loop
-    endProgram = input('Do you want to end program? (Enter yes or no): ')
-
-# calls main
-main()
+if __name__ == "__main__":
+    main()
