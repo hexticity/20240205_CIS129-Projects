@@ -1,30 +1,5 @@
 import random
 
-# initialize variables
-endProgram = "no"
-playerOne = "NO NAME"
-playerTwo = "NO NAME"
-
-# call to inputNames
-playerOne, playerTwo = inputNames(playerOne, playerTwo)
-
-# while loop to run program again
-while endProgram == 'no':
-
-    # initialize variables
-    p1number = 0
-    p2number = 0
-    winnerName = 'NO NAME'
-
-    # call to rollDice
-    winnerName = rollDice(p1number, p2number, playerOne, playerTwo, winnerName)
-
-    # call to displayInfo
-    displayInfo(winnerName)
-
-    # end of while loop
-    endProgram = raw_input('Do you want to end program? (Enter yes or no): ')
-
 # this function gets the players names
 def inputNames(playerOne, playerTwo):
     playerOne = input('Enter player 1 name: ')
@@ -48,6 +23,30 @@ def rollDice(p1number, p2number, playerOne, playerTwo, winnerName):
 def displayInfo(winnerName):
     print('The winner is', winnerName)
 
+# initialize variables
+endProgram = "no"
+playerOne = "NO NAME"
+playerTwo = "NO NAME"
+
+# call to inputNames
+playerOne, playerTwo = inputNames(playerOne, playerTwo)
+
+# while loop to run program again
+while endProgram == 'no':
+
+    # initialize variables
+    p1number = 0
+    p2number = 0
+    winnerName = 'NO NAME'
+
+    # call to rollDice
+    winnerName = rollDice(p1number, p2number, playerOne, playerTwo, winnerName)
+
+    # call to displayInfo
+    displayInfo(winnerName)
+
+    # end of while loop
+    endProgram = input('Do you want to end program? (Enter yes or no): ')
 
 # calls main
 main()
