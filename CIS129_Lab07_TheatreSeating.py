@@ -15,6 +15,11 @@ def display_welcome_message():
     for section in SECTIONS:
         print(f"Section {section}: ${SEAT_PRICES[section]} per seat")
     print()
+    # Display available seats in each section
+    print("Available seats in each section:")
+    for section in SECTIONS:
+        print(f"Section {section}: {SEAT_COUNTS[section]} seats")
+    print()
 
 # Function to obtain ticket sales while implementing input validation
 def get_ticket_sales():
@@ -72,18 +77,18 @@ def main():
         # Display number of seats sold in each section
         print("Number of seats sold in each section:")
         for section, num_seats_sold in total_seats_sold.items():
-            print(f"Section {section}: {num_seats_sold} seats")
+            print(f"Section {section}: {num_seats_sold} seats sold out of {SEAT_COUNTS[section] + num_seats_sold} total seats")
         print()
 
         # Ask if the user wants to make another purchase
         if input("Do you want to make another purchase? (yes/no): ").lower() != "yes":
             break
 
-    # Display overall total and number of seats sold and subtotals for each section
+    # Display overall total and number of seats sold in each section
     print("Overall total: ${}".format(total_sales))
-    print("Number of seats sold and subtotals for each section:")
+    print("Number of seats sold in each section:")
     for section, num_seats_sold in total_seats_sold.items():
-        print(f"Section {section}: {num_seats_sold} seats, Subtotal: ${num_seats_sold * SEAT_PRICES[section]}")
+        print(f"Section {section}: {num_seats_sold} seats sold out of {SEAT_COUNTS[section] + num_seats_sold} total seats")
 
 if __name__ == "__main__":
     main()
