@@ -1,40 +1,66 @@
+# Project: Lab 7 Dice Game
+# Author: Raymond Llamas
+# Date: 03-10-2024
+# Program Description: Basic dice game including two players and one dice roll per player. Victory goes to
+# player with the highest dice roll.
+
+# add libraries needed
 import random
 
-def roll_dice():
-    return random.randint(1, 6)
-
-def get_player_names():
-    player1 = input("Enter player 1 name: ")
-    player2 = input("Enter player 2 name: ")
-    return player1, player2
-
-def determine_winner(player1, player2, roll1, roll2):
-    if roll1 == roll2:
-        return "It's a tie!"
-    elif roll1 > roll2:
-        return player1 + " wins!"
-    else:
-        return player2 + " wins!"
-
+# the main function
 def main():
-    print("Welcome to the Dice Game!")
-    player1, player2 = get_player_names()
-    
-    play_again = True
-    while play_again:
-        input("Press Enter to roll the dice...")
-        roll1 = roll_dice()
-        roll2 = roll_dice()
-        
-        print(player1, "rolled:", roll1)
-        print(player2, "rolled:", roll2)
-        
-        print(determine_winner(player1, player2, roll1, roll2))
-        
-        play_again_input = input("Do you want to play again? (yes/no): ")
-        play_again = play_again_input.lower() == "yes"
+    print()
 
-    print("Thanks for playing!")
+    # initialize variables
+    endProgram = 'no'
+    playerOne = 'NO NAME'
+    playerTwo = 'NO NAME'
+
+    # call to inputNames
+    playerOne, playerTwo = inputNames(playerOne, playerTwo)
+
+    # while loop to run program again
+    while endProgram == 'no':
+
+        # populate variables
+        winnersName = 'NO NAME'
+        p1number = 0
+        p2number = 0
+
+        # call to rollDice
+        winnersName = rollDice(p1number, p2number, playerOne, playerTwo, winnersName)
+
+        # call to displayInfo
+        displayInfo(winnersName)
+
+        endProgram = input('Do you want to end program? (yes/no): ')
+
+
+# this function gets the players names
+def inputNames(playerOne, playerTwo):
+    playerOne = input("Enter player one's name: ")
+    playerTwo = input("Enter player two's name: ")
+    return playerOne, playerTwo
+
+# this function will get the random values
+def rollDice(p1number, p2number, playerOne, playerTwo, winnersName):
+    p1number = random.randint(1, 6)
+    p2number = random.randint(1, 6)
+    print(playerOne, "rolled:", p1number)
+    print(playerTwo, "rolled:", p2number)
+
+    if p1number > p2number:
+        winnersName = playerOne
+    elif p2number > p1number:
+        winnersName = playerTwo
+    else:
+        winnersName = "TIE"
+
+    return winnersName
+
+# this function displays the winner
+def displayInfo(winnersName):
+    print("The winner is", winnersName)
 
 if __name__ == "__main__":
     main()
