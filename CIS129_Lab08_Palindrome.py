@@ -1,21 +1,32 @@
 # Function to check if a string is a palindrome
 def is_palindrome(s: str) -> bool:
-    # Remove spaces, punctuation, and convert to lowercase to ignore case sensitivity
-    normal_str = ""
+    # Normalize the string: remove spaces, punctuation, and convert to lowercase.
+    normalized_str = ""
     for char in s:
         if char.isalnum():  # Check if character is alphanumeric
-            normal_str += char.lower()  # Convert string to lowercase and add to the normalized string
+            normalized_str += char.lower()
 
-    # Step 2: Use a stack to reverse the string.
+    # Use a list as a stack to reverse the string.
     stack = []
-    for char in normal_str:
-        stack.append(char)  # Push each character of the string onto the stack
+    for char in normalized_str:
+        stack.append(char)  # Push each character onto the stack
 
-    # Step 3: Create the reversed string by popping elements from the stack.
+    # Create the reversed string by popping from the stack.
     reversed_str = ""
     while stack:
-        reversed_str += stack.pop()  # Pop the character from the stack and add it to the reversed string
+        reversed_str += stack.pop()
 
-    # Step 4: Compare the normalized string with the reversed string.
-    # If they are the same, the string is a palindrome.
-    return normal_str == reversed_str he .===
+    # Compare the original normalized string with the reversed string.
+    return normalized_str == reversed_str
+
+# Ask the user to input a word or phrase to check for palindrome.
+user_input = input("Enter a word or phrase to check if it's a palindrome: ")
+
+# Check if the input is a palindrome and print the result.
+if is_palindrome(user_input):
+    print("Yes, it's a palindrome!")
+else:
+    print("No, it's not a palindrome.")
+
+# Note: The execution of input() function and print statements will not work in this environment.
+# To test this functionality, please run the code in a local Python environment or an online Python interpreter.
