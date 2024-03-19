@@ -27,6 +27,3 @@ if is_palindrome(user_input):
     print("Yes, it's a palindrome!")
 else:
     print("No, it's not a palindrome.")
-
-# Note: The execution of input() function and print statements will not work in this environment.
-# To test this functionality, please run the code in a local Python environment or an online Python interpreter.
