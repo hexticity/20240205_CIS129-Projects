@@ -1,5 +1,4 @@
 # 9.1 Writing Grades to a Plain Text File with Additional Comments
-
 def write_grades_to_file(filename):
     """
     Prompts the user to enter grades and writes them to a specified file.
@@ -18,8 +17,9 @@ def write_grades_to_file(filename):
 
 # write_grades_to_file("grades.txt")
 
-# 9.2 Reading Grades from a Plain Text File with Additional Comments
 
+
+# 9.2 Reading Grades from a Plain Text File with Additional Comments
 def read_grades_from_file(filename):
     """
     Reads grades from a specified file, calculates the total, count, and average,
@@ -50,8 +50,9 @@ def read_grades_from_file(filename):
 
 # read_grades_from_file("grades.txt")
 
-# 9.3 Writing Student Records to a CSV File with Additional Comments
 
+
+# 9.3 Writing Student Records to a CSV File with Additional Comments
 import csv
 
 def write_student_records_to_csv(filename):
@@ -75,5 +76,5 @@ def write_student_records_to_csv(filename):
             exam2grade = input("Enter grade for exam 2: ")
             exam3grade = input("Enter grade for exam 3: ")
             writer.writerow([firstname, lastname, exam1grade, exam2grade, exam3grade])
-
+            
 # write_student_records_to_csv("grades.csv")
